@@ -252,6 +252,78 @@ body.light-mode .footer {
     border-top: 1px solid #ddd;
 }
 
+.verses-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.poem-card {
+    background: rgba(20, 20, 30, 0.8);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid #2a2a40;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    text-align: center;
+}
+
+body.light-mode .poem-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.poem-card:hover {
+    transform: translateY(-10px);
+    border-color: #ffcc33;
+}
+
+.poem-title {
+    font-size: 1.8rem;
+    color: #ffcc33;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+body.light-mode .poem-title {
+    color: #d4a017;
+}
+
+.poem-content {
+    font-size: 1.2rem;
+    line-height: 2;
+    color: #ddd;
+    margin-bottom: 30px;
+}
+
+body.light-mode .poem-content {
+    color: #444;
+}
+
+.stanza {
+    margin-bottom: 20px;
+}
+
+.poem-meta {
+    font-size: 0.8rem;
+    color: #666;
+    font-style: italic;
+    border-top: 1px solid #222;
+    padding-top: 15px;
+}
+
+body.light-mode .poem-meta {
+    color: #888;
+    border-top: 1px solid #ddd;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
