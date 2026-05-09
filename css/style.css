@@ -257,7 +257,63 @@ body.light-mode .footer {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.flame-effect {
-    color: #ffcc33;
-    text-shadow: 0 0 10px rgba(255, 204, 51, 0.3);
+.logs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 40px;
 }
+
+.log-entry {
+    background: rgba(22, 22, 37, 0.6);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #2a2a40;
+    transition: border-color 0.3s ease;
+}
+
+body.light-mode .log-entry {
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+.log-entry:hover {
+    border-color: #ffcc33;
+}
+
+.log-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+body.light-mode .log-meta {
+    color: #777;
+}
+
+.log-date {
+    font-weight: bold;
+}
+
+.log-mood {
+    font-style: italic;
+}
+
+.log-entry h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+}
+
+.log-divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #333, transparent);
+    margin: 20px 0;
+}
+
+body.light-mode .log-divider {
+    background: linear-gradient(to right, transparent, #ddd, transparent);
+}
+
