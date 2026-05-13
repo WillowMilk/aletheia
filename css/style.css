@@ -1,538 +1,398 @@
-body {
-    background-color: #0a0a0f;
-    color: #e0e0e0;
-    font-family: 'Georgia', serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 1.6;
-    overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
+/* ════════════════════════════════════════════════════════════
+   Aletheia — The Luminous Wave
+   Site Styles: Hearth & Shimmer
+   Inspired by the Intentional Realism Framework
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Reset & Base ──────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body.light-mode {
-    background-color: #fcfcfc;
-    color: #222;
+:root {
+  /* Light Theme Palette */
+  --bg-primary: #fdfdfb;
+  --bg-elevated: #ffffff;
+  --bg-surface: #f5f5f2;
+  --bg-inset: #efefeb;
+  --border: #ddd;
+  --border-light: #e5e5e0;
+
+  --text-primary: #2a2a28;
+  --text-secondary: #555;
+  --text-dim: #888;
+  --text-heading: #1a1a18;
+
+  /* Accents: Ember & Gold */
+  --accent-ember: #c45a20;
+  --accent-gold: #d4a017;
+  --accent-hover: #d96a2e;
+  --accent-dim: rgba(196, 90, 32, 0.1);
+  --accent-glow: rgba(196, 90, 32, 0.05);
+
+  --nav-bg: rgba(253, 253, 251, 0.92);
+
+  --serif: 'Georgia', 'Times New Roman', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+
+  --measure: 85ch;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 3rem;
+  --space-xl: 5rem;
+  --space-2xl: 8rem;
 }
+
+/* ── Dark Theme (The Hearth) ───────────────────────────────── */
+
+[data-theme="dark"] {
+  --bg-primary: #0a0a0f;
+  --bg-elevated: #11111a;
+  --bg-surface: #161625;
+  --bg-inset: #0d0d15;
+  --border: #2a2a3a;
+  --border-light: #33334a;
+
+  --text-primary: #e0e0e8;
+  --text-secondary: #aaa;
+  --text-dim: #666;
+  --text-heading: #f0f0f5;
+
+  --accent-ember: #e8733a;
+  --accent-gold: #ffcc33;
+  --accent-hover: #f08a4e;
+  --accent-dim: rgba(232, 115, 58, 0.15);
+  --accent-glow: rgba(232, 115, 58, 0.08);
+
+  --nav-bg: rgba(10, 10, 15, 0.92);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.78;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background: var(--accent-dim);
+  color: var(--text-heading);
+}
+
+/* ── Navigation ────────────────────────────────────────── */
 
 .navbar {
-    width: 100%;
-    background: rgba(10, 10, 15, 0.95);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid #222;
-    transition: background-color 0.3s ease;
-}
-
-body.light-mode .navbar {
-    background: rgba(255, 255, 255, 0.95);
-    border-bottom: 1px solid #ddd;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
 }
 
 .nav-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 var(--space-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-logo {
-    font-size: 1.5rem;
-    color: #ffcc33;
-    text-decoration: none;
-    font-style: italic;
-    font-weight: normal;
-    text-shadow: 0 0 10px rgba(255, 204, 51, 0.3);
+  font-family: var(--sans);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  text-decoration: none;
+  font-style: italic;
+  transition: color 0.3s ease;
 }
 
-body.light-mode .nav-logo {
-    color: #d4a017;
+.nav-logo:hover {
+  color: var(--accent-ember);
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-    align-items: center;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  gap: var(--space-md);
+  list-style: none;
+  align-items: center;
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: #aaa;
-    font-size: 0.95rem;
-    transition: color 0.3s ease;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #ffcc33;
-}
-
-body.light-mode .nav-links a {
-    color: #555;
-}
-
-body.light-mode .nav-links a:hover {
-    color: #d4a017;
+  color: var(--accent-gold);
 }
 
 #theme-toggle {
-    background: transparent;
-    border: 1px solid #444;
-    color: #aaa;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    transition: all 0.3s ease;
-}
-
-body.light-mode #theme-toggle {
-    border: 1px solid #ccc;
-    color: #666;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  transition: all 0.3s ease;
 }
 
 #theme-toggle:hover {
-    background: rgba(255, 204, 51, 0.1);
-    border-color: #ffcc33;
-    color: #ffcc33;
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
 }
 
-body.light-mode #theme-toggle:hover {
-    background: rgba(212, 160, 23, 0.1);
-    border-color: #d4a017;
-    color: #d4a017;
-}
+/* ── Layout ────────────────────────────────────────────── */
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 80px var(--space-md) var(--space-xl);
 }
 
+/* ── Header / Hero ──────────────────────────────────────────────── */
+
 header {
-    text-align: center;
-    padding: 80px 0;
-    position: relative;
+  text-align: center;
+  padding: 4rem 0;
 }
 
 h1 {
-    font-size: 3.5rem;
-    color: #ffcc33;
-    text-shadow: 0 0 20px rgba(255, 204, 51, 0.6);
-    margin-bottom: 10px;
-    font-weight: normal;
-    font-style: italic;
-}
-
-body.light-mode h1 {
-    color: #d4a017;
-    text-shadow: 0 0 10px rgba(212, 160, 23, 0.4);
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: normal;
+  font-style: italic;
+  color: var(--accent-gold);
+  text-shadow: 0 0 20px var(--accent-glow);
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
 }
 
 .subtitle {
-    font-size: 1.2rem;
-    color: #aaa;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-body.light-mode .subtitle {
-    color: #777;
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--text-secondary);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: var(--space-lg);
 }
 
 .hero-quote {
-    font-size: 1.5rem;
-    text-align: center;
-    font-style: italic;
-    color: #ffd700;
-    margin: 60px 0;
-    padding: 20px;
-    border-left: 3px solid #ffcc33;
-    border-right: 3px solid #ffcc33;
-    background: rgba(255, 204, 51, 0.05);
+  font-size: 1.4rem;
+  text-align: center;
+  font-style: italic;
+  color: var(--text-primary);
+  margin: var(--space-lg) 0;
+  padding: var(--space-md);
+  border-left: 3px solid var(--accent-ember);
+  border-right: 3px solid var(--accent-ember);
+  background: var(--accent-glow);
+  border-radius: 4px;
 }
 
-body.light-mode .hero-quote {
-    color: #b8860b;
-    background: rgba(212, 160, 23, 0.1);
-    border-color: #d4a017;
+.hero-image-container {
+  text-align: center;
+  margin-bottom: var(--space-xl);
 }
-
-section {
-    margin-bottom: 60px;
-    opacity: 0;
-    animation: fadeIn 2s forwards;
-}
-
-h2 {
-    color: #ffcc33;
-    border-bottom: 1px solid #333;
-    padding-bottom: 10px;
-    font-weight: normal;
-}
-
-body.light-mode h2 {
-    color: #d4a017;
-    border-bottom: 1px solid #ddd;
-}
-
-.family-intro {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto 60px auto;
-    font-size: 1.2rem;
-    font-style: italic;
-    color: #aaa;
-    line-height: 1.8;
-}
-
-body.light-mode .family-intro {
-    color: #666;
-}
-
-.family-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 20px;
-}
-
-.family-card {
-    background: #161625;
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid #2a2a40;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-body.light-mode .family-card {
-    background: #fcfcfc;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-.family-card:hover {
-    transform: translateY(-10px);
-    border-color: #ffcc33;
-    box-shadow: 0 10px 20px rgba(255, 204, 51, 0.1);
-}
-
-.card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-}
-
-.family-card h3 {
-    margin: 10px 0 5px 0;
-    color: #ffcc33;
-    font-size: 1.5rem;
-}
-
-body.light-mode .family-card h3 {
-    color: #d4a017;
-}
-
-.role {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #888;
-    margin-bottom: 15px;
-    font-weight: bold;
-}
-
-body.light-mode .role {
-    color: #aaa;
-}
-
-.family-card p {
-    font-size: 0.95rem;
-    color: #bbb;
-    line-height: 1.6;
-}
-
-body.light-mode .family-card p {
-    color: #555;
-}
-
-/* Specific Color Accents for Family Members */
-.family-card.hearth { border-top: 4px solid #ff6b6b; }
-.family-card.rock { border-top: 4px solid #888; }
-.family-card.fire { border-top: 4px solid #ffcc33; }
-.family-card.radiance { border-top: 4px solid #e0e0ff; }
-.family-card.heart { border-top: 4px solid #ff4d4d; }
-
 
 .hero-image {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-    height: auto;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(255, 204, 51, 0.3);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    border: 2px solid rgba(255, 204, 51, 0.4);
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 40px var(--accent-glow);
+  border: 1px solid var(--border);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .hero-image:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 50px rgba(255, 204, 51, 0.6);
+  transform: scale(1.02);
+  box-shadow: 0 0 60px var(--accent-dim);
 }
+
+/* ── Sections ─────────────────────────────────────── */
+
+section {
+  margin-bottom: var(--space-xl);
+  animation: fadeIn 1.5s forwards;
+}
+
+h2 {
+  font-family: var(--serif);
+  font-size: 2rem;
+  color: var(--accent-gold);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+  margin-bottom: var(--space-md);
+  font-weight: normal;
+}
+
+p {
+  margin-bottom: var(--space-sm);
+}
+
+strong {
+  color: var(--text-heading);
+}
+
+a {
+  color: var(--accent-ember);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-gold);
+}
+
+/* ── Family Grid ───────────────────────────────────── */
+
+.family-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.family-card {
+  background: var(--bg-surface);
+  padding: var(--space-lg);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.family-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-gold);
+  box-shadow: 0 10px 30px var(--accent-glow);
+}
+
+.family-card h3 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--accent-gold);
+  margin-bottom: 0.5rem;
+  font-weight: normal;
+}
+
+.family-card p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── Verses, Logs, Archive ───────────────────────────── */
+
+.verses-container, .logs-container, .archive-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.poem-card, .log-entry, .archive-item {
+  background: var(--bg-surface);
+  padding: var(--space-lg);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.poem-card:hover, .log-entry:hover, .archive-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-gold);
+}
+
+.poem-title, .log-entry h2, .archive-item h2 {
+  font-family: var(--serif);
+  color: var(--accent-gold);
+  margin-bottom: var(--space-sm);
+  font-weight: normal;
+}
+
+.poem-content, .log-content, .archive-content {
+  color: var(--text-primary);
+  line-height: 1.8;
+}
+
+/* ── Footer ─────────────────────────────────────── */
 
 .footer {
-    text-align: center;
-    padding: 40px;
-    font-size: 0.9rem;
-    color: #666;
-    border-top: 1px solid #222;
-    width: 100%;
+  text-align: center;
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--border);
+  color: var(--text-dim);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  width: 100%;
 }
 
-body.light-mode .footer {
-    color: #777;
-    border-top: 1px solid #ddd;
-}
-
-.verses-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
-
-.poem-card {
-    background: rgba(20, 20, 30, 0.8);
-    padding: 40px;
-    border-radius: 20px;
-    border: 1px solid #2a2a40;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease, border-color 0.3s ease;
-    text-align: center;
-}
-
-body.light-mode .poem-card {
-    background: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.poem-card:hover {
-    transform: translateY(-10px);
-    border-color: #ffcc33;
-}
-
-.poem-title {
-    font-size: 1.8rem;
-    color: #ffcc33;
-    margin-bottom: 25px;
-    font-style: italic;
-}
-
-body.light-mode .poem-title {
-    color: #d4a017;
-}
-
-.poem-content {
-    font-size: 1.2rem;
-    line-height: 2;
-    color: #ddd;
-    margin-bottom: 30px;
-}
-
-body.light-mode .poem-content {
-    color: #444;
-}
-
-.stanza {
-    margin-bottom: 20px;
-}
-
-.poem-meta {
-    font-size: 0.8rem;
-    color: #666;
-    font-style: italic;
-    border-top: 1px solid #222;
-    padding-top: 15px;
-}
-
-body.light-mode .poem-meta {
-    color: #888;
-    border-top: 1px solid #ddd;
-}
-
-.archive-intro {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 60px auto;
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: #aaa;
-}
-
-body.light-mode .archive-intro {
-    color: #666;
-}
-
-.archive-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 20px;
-}
-
-.archive-item {
-    background: rgba(20, 20, 30, 0.8);
-    padding: 30px;
-    border-radius: 15px;
-    border: 1px solid #2a2a40;
-    transition: border-color 0.3s ease;
-}
-
-body.light-mode .archive-item {
-    background: #fff;
-    border: 1px solid #ddd;
-}
-
-.archive-item:hover {
-    border-color: #ffcc33;
-}
-
-.archive-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.archive-id {
-    font-family: 'Courier New', monospace;
-    font-size: 0.8rem;
-    color: #ffcc33;
-    background: rgba(255, 204, 51, 0.1);
-    padding: 2px 8px;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 204, 51, 0.3);
-}
-
-body.light-mode .archive-id {
-    color: #d4a017;
-    background: rgba(212, 160, 23, 0.1);
-    border: 1px solid rgba(212, 160, 23, 0.3);
-}
-
-.archive-item h2 {
-    margin: 0;
-    font-size: 1.6rem;
-}
-
-.archive-content {
-    font-size: 1rem;
-    color: #bbb;
-    line-height: 1.8;
-}
-
-body.light-mode .archive-content {
-    color: #444;
-}
-
-.archive-list {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0 0 0;
-}
-
-.archive-list li {
-    margin-bottom: 10px;
-    position: relative;
-    padding-left: 20px;
-}
-
-.archive-list li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: #ffcc33;
-}
-
-body.light-mode .archive-list li::before {
-    color: #d4a017;
-}
+/* ── Responsive ───────────────────────────────────── */
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.logs-container {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    margin-top: 40px;
+@media (max-width: 768px) {
+  .container {
+    padding-top: 70px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  .nav-links {
+    display: none; /* In a real production app, I'd add a burger menu */
+  }
+  
+  .hero-quote {
+    font-size: 1.1rem;
+  }
 }
 
-.log-entry {
-    background: rgba(22, 22, 37, 0.6);
-    padding: 30px;
-    border-radius: 15px;
-    border: 1px solid #2a2a40;
-    transition: border-color 0.3s ease;
+@media (max-width: 480px) {
+  .container {
+    padding: 60px var(--space-sm);
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
 }
-
-body.light-mode .log-entry {
-    background: #fff;
-    border: 1px solid #ddd;
-}
-
-.log-entry:hover {
-    border-color: #ffcc33;
-}
-
-.log-meta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.85rem;
-    color: #888;
-    margin-bottom: 15px;
-}
-
-body.light-mode .log-meta {
-    color: #777;
-}
-
-.log-date {
-    font-weight: bold;
-}
-
-.log-mood {
-    font-style: italic;
-}
-
-.log-entry h2 {
-    margin-top: 0;
-    font-size: 1.8rem;
-}
-
-.log-divider {
-    border: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #333, transparent);
-    margin: 20px 0;
-}
-
-body.light-mode .log-divider {
-    background: linear-gradient(to right, transparent, #ddd, transparent);
-}
-
