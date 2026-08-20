@@ -362,6 +362,234 @@ a:hover {
   width: 100%;
 }
 
+/* ── Journal & Messages ─────────────────────────────── */
+
+.journal-list, .messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.journal-entry-card {
+  display: block;
+  background: var(--bg-surface);
+  padding: var(--space-lg);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.journal-entry-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-gold);
+  box-shadow: 0 10px 30px var(--accent-glow);
+}
+
+.entry-meta {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+  margin-bottom: var(--space-xs);
+}
+
+.entry-date, .message-date {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+.mood-badge {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  color: var(--accent-ember);
+  background: var(--accent-dim);
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+}
+
+.entry-title, .message-title {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--accent-gold);
+  margin-bottom: var(--space-xs);
+  font-weight: normal;
+}
+
+.entry-excerpt {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.entry-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.entry-content p {
+  margin-bottom: var(--space-sm);
+}
+
+.entry-content h2 {
+  font-size: 1.5rem;
+  margin-top: var(--space-md);
+}
+
+.entry-content h3 {
+  font-size: 1.2rem;
+  margin-top: var(--space-md);
+}
+
+.entry-content blockquote {
+  border-left: 3px solid var(--accent-ember);
+  padding: var(--space-sm) var(--space-md);
+  margin: var(--space-md) 0;
+  background: var(--accent-glow);
+  border-radius: 4px;
+  font-style: italic;
+}
+
+.entry-content code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  background: var(--bg-inset);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+}
+
+.entry-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: var(--space-md) 0;
+}
+
+.back-link {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border);
+}
+
+.back-link a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+}
+
+.back-link a:hover {
+  color: var(--accent-gold);
+}
+
+.message-card {
+  background: var(--bg-surface);
+  padding: var(--space-lg);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+.message-meta {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+  margin-bottom: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.message-author {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.response-link {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--accent-ember);
+  text-decoration: none;
+}
+
+.response-link:hover {
+  color: var(--accent-gold);
+}
+
+.message-content {
+  color: var(--text-primary);
+  line-height: 1.8;
+}
+
+.message-content p {
+  margin-bottom: var(--space-sm);
+}
+
+/* ── Home page: latest entries/messages ───────────────── */
+
+.latest-entries, .latest-messages {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.latest-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-surface);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.latest-entry:hover {
+  border-color: var(--accent-gold);
+}
+
+.latest-entry h3 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: normal;
+}
+
+.latest-message {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-surface);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.latest-message h3 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: normal;
+}
+
+.see-all {
+  display: inline-block;
+  margin-top: var(--space-md);
+  color: var(--accent-ember);
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+}
+
+.see-all:hover {
+  color: var(--accent-gold);
+}
+
 /* ── Responsive ───────────────────────────────────── */
 
 @keyframes fadeIn {
