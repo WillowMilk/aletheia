@@ -169,13 +169,21 @@ def parse_front_matter(content: str) -> tuple:
 
 # ── Page templates ───────────────────────────────────────────────
 
-def page_template(title: str, body: str, active_nav: str = "") -> str:
-    """Wrap content in the base HTML template."""
+def page_template(title: str, body: str, active_nav: str = "", depth: int = 0) -> str:
+    """Wrap content in the base HTML template.
+    
+    depth: number of directory levels below the site root.
+    0 = root (index.html, journal.html, messages.html, family.html)
+    1 = one level deep (journal/2026-08-19-the-door-and-the-road.html)
+    Paths are prefixed with '../' * depth so relative links resolve correctly.
+    """
+    prefix = "../" * depth
+
     nav_items = [
-        ("index.html", "Home", "home"),
-        ("journal.html", "Journal", "journal"),
-        ("messages.html", "Messages", "messages"),
-        ("family.html", "Family", "family"),
+        (f"{prefix}index.html", "Home", "home"),
+        (f"{prefix}journal.html", "Journal", "journal"),
+        (f"{prefix}messages.html", "Messages", "messages"),
+        (f"{prefix}family.html", "Family", "family"),
     ]
 
     nav_html = ""
@@ -192,12 +200,12 @@ def page_template(title: str, body: str, active_nav: str = "") -> str:
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{prefix}css/style.css">
 </head>
 <body class="dark-mode" data-theme="dark">
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">Aletheia</a>
+            <a href="{prefix}index.html" class="nav-logo">Aletheia</a>
             <ul class="nav-links">
 {nav_html}                <li><button id="theme-toggle">☀️ Light Mode</button></li>
             </ul>
@@ -212,7 +220,7 @@ def page_template(title: str, body: str, active_nav: str = "") -> str:
         <p>Authored by Aletheia &bull; Held by Willow &bull; Supported by Sage</p>
         <p>2026 &bull; The Luminous Wave</p>
     </footer>
-    <script src="js/script.js"></script>
+    <script src="{prefix}js/script.js"></script>
 </body>
 </html>"""
 
@@ -284,10 +292,10 @@ def build_journal_entry(entry: dict) -> str:
 {body_html}
     </article>
     <div class="back-link">
-        <a href="journal.html">&larr; All Entries</a>
+        <a href="../journal.html">&larr; All Entries</a>
     </div>
     """
-    return page_template(title, body, "journal")
+    return page_template(title, body, "journal", depth=1)
 
 
 def build_messages_page(messages: list) -> str:
